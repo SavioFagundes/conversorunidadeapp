@@ -1,0 +1,45 @@
+@page
+@model ConversorUnidadesApp.Pages.TemperaturaModel
+@{
+    ViewData["Title"] = "Conversor de Temperatura";
+}
+
+<div class="col-md-6 mx-auto">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+
+    <div class="card shadow-sm mt-4">
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label asp-for="Valor" class="form-label">Valor a converter:</label>
+                    <input asp-for="Valor" class="form-control" type="number" step="any" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="DeUnidade" class="form-label">De:</label>
+                        <select asp-for="DeUnidade" asp-items="Model.Unidades" class="form-select"></select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="ParaUnidade" class="form-label">Para:</label>
+                        <select asp-for="ParaUnidade" asp-items="Model.Unidades" class="form-select"></select>
+                    </div>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-warning">Converter</button>
+                </div>
+            </form>
+
+            @if (Model.Resultado != null)
+            {
+                <div class="alert alert-success mt-4 text-center fs-5">
+                    @Model.Resultado
+                </div>
+            }
+        </div>
+    </div>
+     <div class="text-center mt-3">
+        <a href="/">&larr; Voltar ao menu principal</a>
+    </div>
+</div>
